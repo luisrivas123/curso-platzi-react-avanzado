@@ -32,15 +32,15 @@ query getSinglePhoto($id:ID!) {
 // }
 
 export const PhotoCardWithQuery = ({ id }) => {
-  // console.log(id)
   // renderProp( id )
-  const { loading, error, data } = useQuery(GET_SINGLE_PHOTO, {
+  const { error, loading, data } = useQuery(GET_SINGLE_PHOTO, {
       variables: {
         id: id
       }
     }
   )
   if (error) {
+    console.log(error);
     return <h2>Internal Server Error</h2>
   }
   if (loading) {
