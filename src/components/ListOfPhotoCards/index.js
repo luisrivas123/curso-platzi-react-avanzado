@@ -1,22 +1,9 @@
 import React from 'react'
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
+import { useGetPhotos } from '../../hoc/withPhotos';
 import { PhotoCard } from '../PhotoCard'
 
-// Componente de orden superior, envuelve el componente
-// y recuperar la información 
-const whitPhotos = gql`
-  query getPhotos {
-    photos {
-      id
-      categoryId
-      src
-      likes
-      userId
-      liked
-    }
-  }
-`;
 
 // export const ListOfPhotoCards = () => {
 //   return (
@@ -27,8 +14,10 @@ const whitPhotos = gql`
 //   )
 // }
 
-export const ListOfPhotoCards = () => {
-  const { loading, error, data } = useQuery(whitPhotos);
+// export const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => {
+export const ListOfPhotoCards = ({ categoryId }) => {
+
+  const { error, loading, data }  = useGetPhotos(categoryId)
 
   if (error) {
     return <h2>Internal Server Error</h2>;
@@ -42,6 +31,7 @@ export const ListOfPhotoCards = () => {
       {data.photos.map((photo) => (
         <PhotoCard key={photo.id} {...photo} />
       ))}
+      {/* {photos.map(photo => <PhotoCard key={photo.id} {...photo} />)} */}
     </ul>
   );
 };
