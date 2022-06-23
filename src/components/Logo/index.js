@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { Svg } from './styles'
+import { Link } from 'react-router-dom'
 
 export const Logo = (props) => (
+  <Link to='/' >
   <Svg
     width={387.856}
     height={122}
@@ -36,6 +38,7 @@ export const Logo = (props) => (
       />
     </g>
   </Svg>
+  </Link>
 )
 
 // export default SvgComponent

@@ -1,12 +1,21 @@
 import styled from 'styled-components'
+import { Link as LinkRouter } from 'react-router-dom'
 
-export const Anchor = styled.a`
+export const Link = styled(LinkRouter)`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-decoration: none;
+  width: 75px
+`
+
+/* export const Anchor = styled.a`
   display: flex;
   flex-direction: column;
   text-align: center;
   text-decoration: none;
   width: 75px;
-`
+` */
 
 export const Image = styled.img`
   border: 1px solid #ddd;
