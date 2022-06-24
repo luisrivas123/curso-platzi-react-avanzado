@@ -13,7 +13,7 @@ export const RegisterMutation = () => {
   // </Mutation>
   // const [mutation, { loading: mutationLoading, error: mutationError }] = useMutation(REGISTER)
   // return { mutation, mutationLoading, mutationError }
-  const [registerMutation, { loading: mutationLoading, error: mutationError }] = useMutation(REGISTER)
+  const [registerMutation, { loading: registerLoading, error: registerError }] = useMutation(REGISTER)
 
-  return { registerMutation, mutationLoading, mutationError }
+  return { registerMutation, registerLoading, registerError }
 }

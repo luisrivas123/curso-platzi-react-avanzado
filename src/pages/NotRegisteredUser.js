@@ -3,11 +3,12 @@ import Context from '../Context'
 
 import { UserForm } from '../components/UserForm'
 import { RegisterMutation } from '../container/RegisterMutation'
+import { LoginMutation } from '../container/LoginMutation'
 
 export const NotRegisteredUser = () => {
 
-  const { registerMutation, mutationError, mutationLoading } = RegisterMutation()
-  
+  const { registerMutation, registerError, registerLoading } = RegisterMutation()
+  const { loginMutation, loginError, loginLoading } = LoginMutation()
   // <h1>NotRegisteredUser</h1>
   return(
   
@@ -17,20 +18,30 @@ export const NotRegisteredUser = () => {
       const onSubmit = ({email, password}) => {
         const input = { email, password }
         const variables = { input }
-        registerMutation({ variables })
+        // registerMutation({ variables })
+        // .then(activateAuth)
+        loginMutation({ variables })
         .then(activateAuth)
       } 
 
-      const errorMsg = mutationError && 'El usuario ya existe'
+      const errorMsg = registerError || loginError && 'El usuario ya existe'
+      // const errorMsg = registerError && 'El usuario ya existe'
       // console.log(mutationLoading);
       return (
         <Fragment>
+
           <UserForm 
-          disabled={mutationLoading}
+          disabled={registerLoading}
           error={errorMsg} 
           title='Registrarse' 
           onSubmit={onSubmit} />
-          <UserForm title='Iniciar sesión' onSubmit={activateAuth} />
+
+          <UserForm
+          disabled={loginLoading}
+          error={errorMsg} 
+          title='Iniciar sesión' 
+          onSubmit={onSubmit} />
+
         </Fragment>
       )        
       // return (
