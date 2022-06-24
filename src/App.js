@@ -26,18 +26,18 @@ export const App = () => {
         </Routes>
 
         <Context.Consumer>
-        {
-          ({ isAuth }) =>
-            isAuth
-              ? <Routes>
-                <Route path='/user' element={<User />} />
-                <Route path='/favs' element={<Favs />} />
-              </Routes>
-              : <Routes>
-                <Route path='/user' element={<NotRegisteredUser />} />
-                <Route path='/favs' element={<NotRegisteredUser />} />
-              </Routes>
-        }
+          {
+            ({ isAuth }) =>
+              isAuth
+                ? <Routes>
+                  <Route path='/user' element={<User />} />
+                  <Route path='/favs' element={<Favs />} />
+                </Routes>
+                : <Routes>
+                  <Route path='/user' element={<NotRegisteredUser />} />
+                  <Route path='/favs' element={<NotRegisteredUser />} />
+                </Routes>
+          }
         </Context.Consumer>
 
         <NavBar />
