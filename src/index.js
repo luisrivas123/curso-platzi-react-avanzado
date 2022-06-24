@@ -3,6 +3,8 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
+import Context from './Context'
+
 import { App } from './App'
 
 const client = new ApolloClient({
@@ -15,9 +17,11 @@ const root = createRoot(container)
 // root.render('Hola Luis');
 // root.render(<App />)
 root.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
+  <Context.Provider>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Context.Provider>
 )
 
 // ReactDOM.render(
