@@ -6,10 +6,21 @@ import { Form, Input, Button, Title } from "./styles";
 export const UserForm = ({ onSubmit, title }) => {
   const email = useInputValue('')
   const password = useInputValue('')
+
+  const handleSubmit = (event) => {
+    // Evita que el formulario haga su funcionamiento por defecto "un Post"
+    event.preventDefault()
+    onSubmit({ 
+      email: email.value, 
+      password: password.value 
+    })
+  }
+
   return (
     <div>
       <Title>{title}</Title>
-      <Form onSubmit={onSubmit}>
+      {/* <Form onSubmit={onSubmit}> */}
+      <Form onSubmit={handleSubmit}>
         {/* Recuperar el evento e */}
         <Input placeholder='Email' {...email} />
 
