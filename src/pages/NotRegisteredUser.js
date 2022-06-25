@@ -15,16 +15,21 @@ export const NotRegisteredUser = () => {
   <Context.Consumer>
   {
     ({ activateAuth }) => {
-      const onSubmit = ({email, password}) => {
+      const onSubmitRegister = ({email, password}) => {
         const input = { email, password }
         const variables = { input }
-        // registerMutation({ variables })
-        // .then(activateAuth)
+        registerMutation({ variables })
+        .then(activateAuth)
+      }
+      const onSubmitLogin = ({email, password}) => {
+        const input = { email, password }
+        const variables = { input }
         loginMutation({ variables })
         .then(activateAuth)
       } 
 
-      const errorMsg = registerError || loginError && 'El usuario ya existe'
+      const errorRegisterMsg = registerError && 'El usuario ya existe'
+      const erroLoginrMsg = loginError && 'El usuario o Contraseña invalidad'
       // const errorMsg = registerError && 'El usuario ya existe'
       // console.log(mutationLoading);
       return (
@@ -32,15 +37,15 @@ export const NotRegisteredUser = () => {
 
           <UserForm 
           disabled={registerLoading}
-          error={errorMsg} 
+          error={errorRegisterMsg} 
           title='Registrarse' 
-          onSubmit={onSubmit} />
+          onSubmit={onSubmitRegister} />
 
           <UserForm
           disabled={loginLoading}
-          error={errorMsg} 
+          error={erroLoginrMsg} 
           title='Iniciar sesión' 
-          onSubmit={onSubmit} />
+          onSubmit={onSubmitLogin} />
 
         </Fragment>
       )        
