@@ -11,7 +11,6 @@ export const NotRegisteredUser = () => {
   const { loginMutation, loginError, loginLoading } = LoginMutation()
   // <h1>NotRegisteredUser</h1>
   
-  
   const onSubmitRegister = ({email, password}) => {
     const input = { email, password }
     const variables = { input }
