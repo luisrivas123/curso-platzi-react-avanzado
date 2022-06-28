@@ -1,9 +1,10 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const WebpackPwaManifestPlugin = require('webpack-pwa-manifest')
+const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
 
 module.exports = {
   output: {
+    path: path.resolve(__dirname, 'dist'),
     filename: 'app.bundle.js',
     publicPath: '/'
   },
@@ -19,18 +20,13 @@ module.exports = {
       theme_color: '#8d00ff',
       icons: [
         {
-          src: path.resolve('src/assets/icon.png'),
-          sizes: [96, 128, 144, 192, 256, 384, 512],
+          src: path.resolve('src/Assets/icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
           purpose: 'maskable'
-        },
-        {
-          src: path.resolve('src/assets/icon.png'),
-          sizes: [144, 192] // multiple sizes
         }
       ]
     })
   ],
-  mode: 'development',
   module: {
     rules: [
       {
@@ -39,10 +35,19 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
           }
         }
       }
     ]
+  },
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    compress: true,
+    historyApiFallback: true,
+    
   }
 }
