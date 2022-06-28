@@ -3,7 +3,7 @@ import { GetFavorite } from '../container/GetFavorite'
 import { ListOfFavs } from '../components/ListOfFavs';
 import { Layout } from '../components/Layout'
 
-export const Favs = () => {
+export default () => {
   
   const { data, loading, error } = GetFavorite()
     // console.log(data);

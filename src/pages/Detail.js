@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import { useParams } from 'react-router-dom'
 import { PhotoCardWithQuery } from '../container/PhotoCardWithQuery'
 
-export const Detail = () => {
+export default () => {
+// export const Detail = () => {
   const { detailId } = useParams();
   // console.log(detailId)
   return (
