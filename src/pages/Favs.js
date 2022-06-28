@@ -1,16 +1,25 @@
 import React, {Fragment} from 'react'
 import { GetFavorite } from '../container/GetFavorite'
 import { ListOfFavs } from '../components/ListOfFavs';
-
+import { Layout } from '../components/Layout'
 
 export const Favs = () => {
-  <h1>Favs</h1>
+  
   const { data, loading, error } = GetFavorite()
     // console.log(data);
     if (loading) return 'loading...'
     if (error) return 'error'
 
-    return <ListOfFavs favs={data.favs} />
+    return (
+      <Fragment>
+        <Layout 
+          title='Tus fotos de mascotas favoritas' 
+          subtitle='Con Petgram puedes encontrar fotos de animales domésticos muy bonitos'>
+        </Layout>
+        <ListOfFavs favs={data.favs} />
+      </Fragment>
+      
+    )
   // return(
   //   <Fragment>
   //     <h1>Favs</h1>
