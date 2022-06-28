@@ -4,7 +4,7 @@ import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCards } from '../components/ListOfPhotoCards'
 import { Layout } from '../components/Layout'
 
-export const Home = () => {
+const HomePage = () => {
   const { categoryId } = useParams();
   return (
     <Fragment>
@@ -17,3 +17,7 @@ export const Home = () => {
     </Fragment>
   )
 }
+
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return prevProps.categoryId === props.categoryId
+})
