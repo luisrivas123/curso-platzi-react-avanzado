@@ -1,6 +1,7 @@
 {
     "name": "curso-platzi-react-avanzado",
     "version": "1.0.0",
+    "homepage": "https://agrotech.site/",
     "description": "",
     "main": "index.js",
     "scripts": {
